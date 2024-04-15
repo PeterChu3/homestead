@@ -4,7 +4,28 @@ import Chart from "chart.js/auto";
 import { Line } from 'react-chartjs-2';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
+import {
+  calculateMPH,
+  convertSecondsToMinutes,
+  addLeadingZeros,
+  timeStringToSeconds
+} from './data/utils';
 
+// SUGGEST: this file is huge. I think there are a number of way to condense it down and make use of imports from another directory
+/** A common pattern I've seen is:
+ * src
+ *    App.js
+ *    BibInput.js
+ *    Stats.js
+ *    data
+ *        utils.js -- put the utility time functions here
+ *        api.js -- put the xhr request here
+ *        hooks.js -- sometimes useEffects and other hooks can be extracted and that helps clean up the file
+*/
+// Again doing the above may seem like overkill. But it's a good pattern for scalability and also helps immensely if you were to ever add tests to the application
+
+
+// SUGGEST: Not sure exactly where the code would go as I haven't grokked through this file yet but it would be nice to have a reponse in the UI when the bib number returns 0 results (i.e. they never showed up or skated any miles)
 
 const Stats = (props) => {
     var stats = [];
@@ -242,71 +263,6 @@ const Stats = (props) => {
             </div>
         </div>
     );
-
-
-    //function that converts the time input into seconds
-    function timeStringToSeconds(timeString) {
-        const timeComponents = timeString.split(':');
-
-        let totalSeconds = 0;
-
-        if (timeComponents.length === 3) {
-            // HH:MM:SS.SS format
-            const [hours, minutes, secondsWithMillis] = timeComponents;
-            const [seconds, milliseconds] = secondsWithMillis.split('.');
-
-            totalSeconds =
-                parseInt(hours, 10) * 3600 +
-                parseInt(minutes, 10) * 60 +
-                parseInt(seconds, 10);
-
-            totalSeconds += parseFloat(`0.${milliseconds || 0}`);
-        } else if (timeComponents.length === 2) {
-            // MM:SS.SS format
-            const [minutes, secondsWithMillis] = timeComponents;
-            const [seconds, milliseconds] = secondsWithMillis.split('.');
-
-            totalSeconds =
-                parseInt(minutes, 10) * 60 +
-                parseInt(seconds, 10);
-
-            totalSeconds += parseFloat(`0.${milliseconds || 0}`);
-        } else {
-            console.error('Invalid time format');
-        }
-
-        return totalSeconds;
-    }
-    function addLeadingZeros(number) {
-        return String(number).padStart(2, '0');
-    }
-
-    //Function to calculate miles per hour from distance and seconds.
-    function calculateMPH(distanceInMiles, timeInSeconds) {
-        // Convert time from seconds to hours
-        const timeInHours = timeInSeconds / 3600;
-
-        // Calculate miles per hour
-        const mph = parseFloat((distanceInMiles / timeInHours).toFixed(2));
-
-        return mph;
-    }
-    //Function to convert total seconds to minutes and seconds
-    function convertSecondsToMinutes(totalSeconds, divisor) {
-        // Calculate minutes and seconds
-        const hours = Math.floor(totalSeconds / divisor / 3600);
-        const minutes = Math.floor(((totalSeconds / divisor) % 3600) / 60);
-        const seconds = Math.floor((totalSeconds / divisor) % 60);
-
-        // Return the result as an object
-        return {
-            hours,
-            minutes,
-            seconds,
-        };
-    };
-
-
 };
 
 export default Stats;
