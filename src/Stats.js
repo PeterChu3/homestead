@@ -33,7 +33,7 @@ const Stats = (props) => {
     };
     //goals
     const [miles, setMiles] = useState(0);
-    const [milesPerLap, setMilesPerLap] = useState(1.42);
+    const [milesPerLap, setMilesPerLap] = useState(1.38);
     const [goalLaps, setLaps] = useState(0);
 
     const calculateLaps = () => {
@@ -45,9 +45,9 @@ const Stats = (props) => {
     const handleOptionChange = (event) => {
         setSelectedOption(event.target.value);
         if (event.target.value === "option1") {
-            setMilesPerLap(1.42);
+            setMilesPerLap(1.38);
         } else {
-            setMilesPerLap(1.46);
+            setMilesPerLap(1.38);
         }
     };
 
