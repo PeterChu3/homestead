@@ -46,15 +46,15 @@ const BibInput = ({ onObjectReceived }) => {
     // xhr.open('GET', 'https://raw.githubusercontent.com/PeterChu3/jsonHosting/main/12.json'); // Dummy data
     //https://my4.raceresult.com/310199/RRPublish/data/list?key=8d488f25d22b08ed0dc395c939995c3d&listname=Online%7CLap%20Details&page=live&contest=0&r=pid&pid=814
     if (selectedValue === "2026") {
-      xhr.open('GET', 'https://my4.raceresult.com/356713/RRPublish/data/list?key=2b91361961d47e9c45e3c9817e9c9ac9&listname=Online%7CLap%20Details&page=live&contest=0'); // 2025
+      xhr.open('GET', 'https://my-us-1.raceresult.com/356713/details1/list?key=2b91361961d47e9c45e3c9817e9c9ac9&listname=Online%7CLap%20Details&page=live&contest=0'); // 2025
     } else if (selectedValue === "2025") {
-      xhr.open('GET', 'https://my4.raceresult.com/310199/RRPublish/data/list?key=8d488f25d22b08ed0dc395c939995c3d&listname=Online%7CLap%20Details&page=live&contest=0'); // 2025
+      xhr.open('GET', 'https://my-us-1.raceresult.com/310199/details1/list?key=8d488f25d22b08ed0dc395c939995c3d&listname=Online%7CLap%20Details&page=live&contest=0'); // 2025
     } else if (selectedValue === "2024") {
-      xhr.open('GET', 'https://my1.raceresult.com/259072/RRPublish/data/list?key=eca2e3d1510caee33b7710a250a6f2c1&listname=Online%7CLap%20Details&page=live&contest=0'); // 2024
+      xhr.open('GET', 'https://my-us-1.raceresult.com/259072/details1/list?key=eca2e3d1510caee33b7710a250a6f2c1&listname=Online%7CLap%20Details&page=live&contest=0'); // 2024
     } else if (selectedValue === "2023") {
-      xhr.open('GET', 'https://my4.raceresult.com/204047/RRPublish/data/list?key=b02d8bcb6d81d09372a43de65f7f7d48&listname=Online%7CLap%20Details&page=live&contest=0'); // 2023
+      xhr.open('GET', 'https://my-us-1.raceresult.com/204047/details1/list?key=b02d8bcb6d81d09372a43de65f7f7d48&listname=Online%7CLap%20Details&page=live&contest=0'); // 2023
     } else if (selectedValue === "2022") {
-      xhr.open('GET', 'https://my4.raceresult.com/192607/RRPublish/data/list?key=9d484a9a9259ff0ae1a4a8570861bc3b&listname=Online%7CLap%20Details&page=live&contest=0'); // 2022
+      xhr.open('GET', 'https://my-us-1.raceresult.com/192607/details1/list?key=9d484a9a9259ff0ae1a4a8570861bc3b&listname=Online%7CLap%20Details&page=live&contest=0'); // 2022
     }
     xhr.onload = function () {
       if (xhr.status === 200) {
